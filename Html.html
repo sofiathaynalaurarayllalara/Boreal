@@ -1,39 +1,262 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-  <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BOREAL | Cosméticos</title>
 
-      background:
-        radial-gradient(
-          circle at 20% 30%,
-          #FFD9E8 0%,
-          transparent 35%
-        ),
-        radial-gradient(
-          circle at 80% 20%,
-          #C9A7E8 0%,
-          transparent 40%
-        ),
-        radial-gradient(
-          circle at 50% 80%,
-          #D4AF37 0%,
-          transparent 35%
-        ),
-        linear-gradient(
-          135deg,
-          #F8DDE8,
-          #CDB4E9,
-          #E8C7D5,
-          #D4AF37
-        );
-    }
-  </style>
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fff8fb;
+  color: #633e50;
+}
+
+header {
+  background: #f5cddd;
+  text-align: center;
+  padding: 20px;
+}
+
+.logo {
+  font-size: 35px;
+  font-weight: bold;
+  letter-spacing: 6px;
+  color: #a74670;
+  margin: 0;
+}
+
+header p { margin: 5px; }
+
+nav { margin-top: 15px; }
+
+nav a {
+  color: #743e57;
+  text-decoration: none;
+  margin: 10px;
+  font-size: 14px;
+}
+
+.banner {
+  text-align: center;
+  padding: 55px 15px;
+  background: #fce8f0;
+}
+
+.banner h2 {
+  font-size: 30px;
+  color: #a74670;
+}
+
+button {
+  background: #c96e98;
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+section {
+  padding: 30px 18px;
+  text-align: center;
+}
+
+.produtos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  max-width: 750px;
+  margin: auto;
+}
+
+.produto {
+  background: white;
+  padding: 13px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px #ead5df;
+}
+
+.produto img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.preco {
+  color: #b64d7e;
+  font-weight: bold;
+}
+
+.detalhes {
+  display: none;
+  max-width: 650px;
+  margin: 30px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 2px 10px #ead5df;
+  text-align: center;
+}
+
+.detalhes img {
+  width: 100%;
+  max-width: 330px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.detalhes p {
+  line-height: 1.6;
+}
+
+.voltar {
+  background: #9d6680;
+  margin-bottom: 15px;
+}
+
+footer {
+  background: #f5cddd;
+  text-align: center;
+  padding: 22px;
+  margin-top: 30px;
+}
+
+@media(max-width: 450px) {
+  .produto img { height: 145px; }
+  nav a { margin: 5px; }
+}
+</style>
 </head>
 
 <body>
+
+<header>
+  <h1 class="logo">BOREAL</h1>
+  <p>COSMÉTICOS & PERFUMARIA</p>
+  <nav>
+    <a href="#inicio">Início</a>
+    <a href="#produtos">Produtos</a>
+    <a href="#contato">Contato</a>
+  </nav>
+</header>
+
+<div class="banner" id="inicio">
+  <h2>Sua beleza, sua essência!</h2>
+  <p>Descubra produtos especiais para realçar sua beleza.</p>
+  <a href="#produtos">
+    <button>Conheça nossos produtos</button>
+  </a>
+</div>
+
+<section id="produtos">
+  <h2>Nossos produtos ♡</h2>
+  <div class="produtos" id="vitrine"></div>
+</section>
+
+<section class="detalhes" id="detalhes">
+  <button class="voltar" onclick="voltar()">← Voltar aos produtos</button>
+  <div id="informacoes"></div>
+</section>
+
+<footer id="contato">
+  <h2 class="logo">BOREAL</h2>
+  <p>Sua beleza, nossa inspiração!</p>
+  <p>Instagram: @boreal.cosmeticos</p>
+  <p>© 2026 Boreal Cosméticos</p>
+</footer>
+
+<script>
+const produtos = [
+{
+ nome: "Perfume Feminino",
+ preco: "R$ 89,90",
+ imagem: "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=700",
+ descricao: "Uma fragrância delicada e marcante, ideal para quem gosta de deixar sua essência por onde passa.",
+ categoria: "Perfumaria",
+ tamanho: "100 ml",
+ destaque: "Fragrância floral"
+},
+{
+ nome: "Perfume Masculino",
+ preco: "R$ 99,90",
+ imagem: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=700",
+ descricao: "Uma fragrância moderna e sofisticada, perfeita para diversas ocasiões.",
+ categoria: "Perfumaria",
+ tamanho: "100 ml",
+ destaque: "Fragrância amadeirada"
+},
+{
+ nome: "Batom",
+ preco: "R$ 29,90",
+ imagem: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=700",
+ descricao: "Batom com acabamento elegante, ideal para completar sua maquiagem.",
+ categoria: "Maquiagem",
+ tamanho: "3,5 g",
+ destaque: "Acabamento cremoso"
+},
+{
+ nome: "Kit Skincare",
+ preco: "R$ 59,90",
+ imagem: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=700",
+ descricao: "Um conjunto de cuidados para fazer parte da sua rotina de beleza.",
+ categoria: "Cuidados com a pele",
+ tamanho: "Kit com 3 itens",
+ destaque: "Rotina de cuidados"
+}
+];
+
+const vitrine = document.getElementById("vitrine");
+
+produtos.forEach((produto, indice) => {
+ vitrine.innerHTML += `
+ <div class="produto">
+   <img src="${produto.imagem}" alt="${produto.nome}">
+   <h3>${produto.nome}</h3>
+   <p class="preco">${produto.preco}</p>
+   <button onclick="abrirProduto(${indice})">Comprar</button>
+ </div>
+ `;
+});
+
+function abrirProduto(indice) {
+ const p = produtos[indice];
+
+ document.getElementById("informacoes").innerHTML = `
+   <img src="${p.imagem}" alt="${p.nome}">
+   <h2>${p.nome}</h2>
+   <h3 class="preco">${p.preco}</h3>
+   <p>${p.descricao}</p>
+   <p><b>Categoria:</b> ${p.categoria}</p>
+   <p><b>Tamanho:</b> ${p.tamanho}</p>
+   <p><b>Característica:</b> ${p.destaque}</p>
+   <button onclick="adicionar()">Adicionar ao carrinho</button>
+ `;
+
+ document.getElementById("detalhes").style.display = "block";
+ document.getElementById("produtos").style.display = "none";
+ document.getElementById("inicio").style.display = "none";
+
+ document.getElementById("detalhes").scrollIntoView();
+}
+
+function voltar() {
+ document.getElementById("detalhes").style.display = "none";
+ document.getElementById("produtos").style.display = "block";
+ document.getElementById("inicio").style.display = "block";
+ document.getElementById("produtos").scrollIntoView();
+}
+
+function adicionar() {
+ alert("Produto adicionado ao carrinho! Obrigada por escolher a Boreal.");
+}
+</script>
+
 </body>
-</html>
  
