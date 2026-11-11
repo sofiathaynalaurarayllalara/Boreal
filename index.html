@@ -3,419 +3,75 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Boreal Cosméticos e Perfumaria">
 <title>BOREAL | Cosméticos & Perfumaria</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#fff9fb;color:#633e50}
+header{background:#f5cddd;padding:20px 5%;text-align:center}
+.logo{font-size:36px;letter-spacing:7px;color:#a74670;font-weight:bold}
+header>p{font-size:12px;letter-spacing:3px;margin-top:5px}
+nav{margin-top:18px;display:flex;justify-content:center;gap:22px;flex-wrap:wrap}
+nav a{color:#743e57;text-decoration:none;font-size:14px;font-weight:bold}
+nav a:hover{color:#b64d7e}
+.actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:16px}
+input[type=search]{width:min(280px,90%);padding:11px;border:1px solid #e8b7cb;border-radius:20px;outline:none}
+button{background:#c96e98;color:white;border:0;padding:11px 18px;border-radius:22px;cursor:pointer;font-weight:bold}
+button:hover{background:#a74670}
+.banner{min-height:330px;background:linear-gradient(120deg,#fce8f0,#f5cddd);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:40px 20px}
+.banner small{letter-spacing:3px;color:#9d6680;margin-bottom:12px}
+.banner h2{font-size:clamp(28px,5vw,40px);color:#a74670;margin-bottom:14px}
+.banner p{margin-bottom:22px;line-height:1.6}
+.benefits{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;background:white;padding:22px 12px;text-align:center;line-height:1.7}
+main{max-width:1150px;margin:auto;padding:38px 20px}
+.title{text-align:center;color:#a74670;font-size:27px;margin-bottom:10px}
+.subtitle{text-align:center;color:#927080;margin-bottom:28px}
+.categories{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+.categories button{background:white;color:#a74670;border:1px solid #e8b7cb}
+.categories button.active{background:#c96e98;color:white}
+.products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.product{background:white;border-radius:13px;overflow:hidden;box-shadow:0 3px 12px #ead5df;padding-bottom:16px}
+.product img{width:100%;height:200px;object-fit:cover;display:block}
+.product h3{font-size:16px;margin:13px}
+.product .short{font-size:12px;color:#927080;margin:0 13px;line-height:1.5;min-height:36px}
+.price{color:#b64d7e;font-size:19px;font-weight:bold;margin:13px}
+.product button{display:block;width:calc(100% - 20px);margin:7px 10px}
+.product .details-btn{background:#f5d6e3;color:#934c6d}
+.page{display:none}
+.page.active{display:block}
+.detail{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;background:white;padding:24px;border-radius:15px;box-shadow:0 3px 12px #ead5df}
+.detail>img{width:100%;height:410px;object-fit:cover;border-radius:12px}
+.detail-info h2{color:#a74670;margin:12px 0}
+.detail-info p{line-height:1.7;margin:10px 0}
+.detail-info .price{font-size:26px;margin:14px 0}
+.quantity{display:flex;align-items:center;gap:12px;margin:18px 0}
+.quantity button{padding:8px 14px}
+.cart{max-width:800px;margin:auto;background:white;padding:24px;border-radius:15px;box-shadow:0 3px 12px #ead5df}
+.cart-item{display:flex;align-items:center;gap:14px;border-bottom:1px solid #f0dce5;padding:14px 0}
+.cart-item img{width:78px;height:78px;object-fit:cover;border-radius:10px}
+.cart-item .item-info{flex:1;line-height:1.7}
+.cart-item .price{font-size:15px;margin:4px 0}
+.summary{text-align:right;margin-top:22px;line-height:2}
+.summary h2{color:#a74670}
+.empty{text-align:center;padding:35px 10px;line-height:2}
+.about{background:#fce8f0;text-align:center;padding:50px 20px;line-height:1.9}
+.about h2{color:#a74670;margin-bottom:14px}
+footer{background:#f5cddd;text-align:center;padding:30px 15px;line-height:2}
+footer a{color:#743e57}
+@media(max-width:850px){
+.products{grid-template-columns:repeat(2,minmax(0,1fr))}
+.detail{grid-template-columns:1fr}
+.detail>img{height:320px}
 }
-
-body {
-    font-family: Arial, sans-serif;
-    background: #fff9fb;
-    color: #633e50;
-}
-
-header {
-    background: #f5cddd;
-    padding: 20px 5%;
-    text-align: center;
-}
-
-.logo {
-    font-size: 36px;
-    letter-spacing: 7px;
-    color: #a74670;
-    font-weight: bold;
-}
-
-header p {
-    font-size: 12px;
-    letter-spacing: 3px;
-    margin-top: 5px;
-}
-
-nav {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 22px;
-}
-
-nav a {
-    color: #743e57;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-nav a:hover {
-    color: #b64d7e;
-}
-
-.acoes {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 18px;
-}
-
-.acoes input {
-    width: 240px;
-    padding: 11px;
-    border: 1px solid #e8b7cb;
-    border-radius: 20px;
-    outline: none;
-}
-
-button {
-    background: #c96e98;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 22px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-button:hover {
-    background: #a74670;
-    transform: translateY(-2px);
-}
-
-.banner {
-    min-height: 340px;
-    background: linear-gradient(120deg, #fce8f0, #f5cddd);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 45px 20px;
-}
-
-.banner h2 {
-    color: #a74670;
-    font-size: 38px;
-    margin-bottom: 15px;
-}
-
-.banner p {
-    font-size: 17px;
-    margin-bottom: 25px;
-}
-
-.banner small {
-    margin-bottom: 12px;
-    letter-spacing: 3px;
-    color: #9d6680;
-}
-
-.beneficios {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 25px;
-    padding: 25px 15px;
-    background: white;
-    text-align: center;
-}
-
-.beneficios div {
-    font-size: 14px;
-    line-height: 1.8;
-}
-
-main {
-    max-width: 1150px;
-    margin: auto;
-    padding: 35px 20px;
-}
-
-.titulo {
-    text-align: center;
-    color: #a74670;
-    margin-bottom: 12px;
-    font-size: 27px;
-}
-
-.subtitulo {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #927080;
-}
-
-.categorias {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-bottom: 30px;
-}
-
-.categorias button {
-    background: white;
-    color: #a74670;
-    border: 1px solid #e8b7cb;
-}
-
-.categorias button.ativo {
-    background: #c96e98;
-    color: white;
-}
-
-.produtos {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 22px;
-}
-
-.produto {
-    background: white;
-    border-radius: 13px;
-    overflow: hidden;
-    box-shadow: 0 3px 12px #ead5df;
-    text-align: left;
-    padding-bottom: 18px;
-    transition: 0.3s;
-}
-
-.produto:hover {
-    transform: translateY(-5px);
-}
-
-.produto img {
-    width: 100%;
-    height: 210px;
-    object-fit: cover;
-}
-
-.produto h3 {
-    font-size: 16px;
-    margin: 13px;
-}
-
-.produto .descricao-curta {
-    font-size: 12px;
-    color: #927080;
-    margin: 0 13px;
-    min-height: 34px;
-    line-height: 1.5;
-}
-
-.preco {
-    color: #b64d7e;
-    font-size: 19px;
-    font-weight: bold;
-    margin: 13px;
-}
-
-.produto button {
-    margin: 3px 10px;
-    width: calc(100% - 20px);
-}
-
-.produto .ver {
-    background: #f5d6e3;
-    color: #934c6d;
-}
-
-.produto .ver:hover {
-    background: #ecc0d2;
-}
-
-.pagina {
-    display: none;
-}
-
-.pagina.ativa {
-    display: block;
-}
-
-.detalhe-produto {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 35px;
-    align-items: start;
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 3px 12px #ead5df;
-}
-
-.detalhe-produto img {
-    width: 100%;
-    height: 420px;
-    object-fit: cover;
-    border-radius: 12px;
-}
-
-.detalhe-info h2 {
-    color: #a74670;
-    margin: 15px 0;
-}
-
-.detalhe-info p {
-    line-height: 1.8;
-    margin-bottom: 13px;
-}
-
-.detalhe-info .preco {
-    margin: 15px 0;
-    font-size: 26px;
-}
-
-.quantidade {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 20px 0;
-}
-
-.quantidade button {
-    padding: 8px 14px;
-}
-
-.carrinho {
-    max-width: 800px;
-    margin: auto;
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 3px 12px #ead5df;
-}
-
-.item-carrinho {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    border-bottom: 1px solid #f0dce5;
-    padding: 15px 0;
-}
-
-.item-carrinho img {
-    width: 85px;
-    height: 85px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.item-carrinho div {
-    flex: 1;
-}
-
-.item-carrinho h3 {
-    font-size: 15px;
-    margin-bottom: 8px;
-}
-
-.item-carrinho .preco {
-    margin: 5px 0;
-    font-size: 15px;
-}
-
-.resumo {
-    text-align: right;
-    margin-top: 25px;
-    line-height: 2;
-}
-
-.resumo h2 {
-    color: #a74670;
-}
-
-.vazio {
-    text-align: center;
-    padding: 40px 10px;
-}
-
-.vazio p {
-    margin: 15px;
-}
-
-.sobre {
-    background: #fce8f0;
-    text-align: center;
-    padding: 55px 20px;
-    line-height: 1.9;
-}
-
-.sobre h2 {
-    color: #a74670;
-    margin-bottom: 15px;
-}
-
-footer {
-    background: #f5cddd;
-    padding: 35px 20px;
-    text-align: center;
-    line-height: 2;
-}
-
-footer .logo {
-    margin-bottom: 10px;
-}
-
-footer a {
-    color: #743e57;
-    text-decoration: none;
-}
-
-@media(max-width: 850px) {
-    .produtos {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .detalhe-produto {
-        grid-template-columns: 1fr;
-    }
-
-    .detalhe-produto img {
-        height: 300px;
-    }
-}
-
-@media(max-width: 450px) {
-    .produtos {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
-
-    .produto img {
-        height: 145px;
-    }
-
-    .produto h3 {
-        font-size: 14px;
-    }
-
-    .produto .descricao-curta {
-        font-size: 11px;
-    }
-
-    .produto button {
-        font-size: 11px;
-        padding: 10px 5px;
-    }
-
-    .banner h2 {
-        font-size: 29px;
-    }
-
-    .logo {
-        font-size: 30px;
-    }
-
-    .item-carrinho img {
-        width: 65px;
-        height: 65px;
-    }
+@media(max-width:450px){
+.products{gap:12px}
+.product img{height:145px}
+.product h3{font-size:14px}
+.product button{font-size:11px;padding:10px 5px}
+.product .short{font-size:11px}
+.detail>img{height:260px}
+.cart-item img{width:62px;height:62px}
 }
 </style>
 </head>
@@ -423,512 +79,449 @@ footer a {
 <body>
 
 <header>
-    <h1 class="logo">BOREAL</h1>
-    <p>COSMÉTICOS & PERFUMARIA</p>
+<h1 class="logo">BOREAL</h1>
+<p>COSMÉTICOS &amp; PERFUMARIA</p>
 
-    <nav>
-        <a href="#" onclick="mostrarPagina('inicio')">Início</a>
-        <a href="#" onclick="mostrarPagina('loja')">Produtos</a>
-        <a href="#" onclick="mostrarPagina('sobre')">Sobre nós</a>
-        <a href="#contato">Contato</a>
-    </nav>
+<nav>
+<a href="#inicio" onclick="showPage('home')">Início</a>
+<a href="#produtos" onclick="showPage('shop')">Produtos</a>
+<a href="#sobre" onclick="showPage('about')">Sobre nós</a>
+<a href="#contato">Contato</a>
+</nav>
 
-    <div class="acoes">
-        <input
-            type="search"
-            id="busca"
-            placeholder="Pesquisar produtos..."
-            oninput="pesquisar()"
-        >
-        <button onclick="mostrarPagina('carrinho')">
-            🛒 Carrinho (<span id="contador">0</span>)
-        </button>
-    </div>
+<div class="actions">
+<input id="search" type="search" placeholder="Pesquisar produtos..." oninput="searchProducts()">
+<button onclick="showPage('cart')">🛒 Carrinho (<span id="cart-count">0</span>)</button>
+</div>
 </header>
 
-<!-- INÍCIO -->
+<div id="home" class="page active">
 
-<div id="inicio" class="pagina ativa">
+<section class="banner" id="inicio">
+<small>BELEZA • CUIDADO • ESSÊNCIA</small>
+<h2>Sua beleza, sua essência!</h2>
+<p>Descubra produtos especiais para realçar sua beleza e expressar quem você é.</p>
+<button onclick="showPage('shop')">Conheça nossa coleção</button>
+</section>
 
-    <div class="banner">
-        <small>BELEZA • CUIDADO • ESSÊNCIA</small>
-        <h2>Sua beleza, sua essência!</h2>
-        <p>Descubra produtos especiais para realçar sua beleza e expressar quem você é.</p>
-        <button onclick="mostrarPagina('loja')">
-            Conheça nossa coleção
-        </button>
-    </div>
+<section class="benefits">
+<div>♡<br><b>Qualidade</b><br>Produtos selecionados</div>
+<div>✧<br><b>Variedade</b><br>Beleza para todos os momentos</div>
+<div>♡<br><b>Atendimento</b><br>Feito com carinho</div>
+</section>
 
-    <div class="beneficios">
-        <div>♡<br><b>Qualidade</b><br>Produtos selecionados</div>
-        <div>✧<br><b>Variedade</b><br>Beleza para todos os momentos</div>
-        <div>♡<br><b>Atendimento</b><br>Feito com carinho</div>
-    </div>
+<main>
+<h2 class="title">Mais procurados ♡</h2>
+<p class="subtitle">Conheça alguns dos favoritos da Boreal.</p>
+<div class="products" id="featured"></div>
+</main>
 
-    <main>
-        <h2 class="titulo">Mais procurados ♡</h2>
-        <p class="subtitulo">Conheça alguns dos favoritos da Boreal.</p>
-        <div class="produtos" id="destaques"></div>
-    </main>
-
-    <section class="sobre">
-        <h2>Descubra a Boreal</h2>
-        <p>
-            Mais do que cosméticos, acreditamos que a beleza está
-            na expressão da sua própria essência. Nossa loja reúne
-            produtos de perfumaria, maquiagem e cuidados pessoais
-            para acompanhar você em todos os momentos.
-        </p>
-        <br>
-        <button onclick="mostrarPagina('loja')">Explorar produtos</button>
-    </section>
-
+<section class="about">
+<h2>Descubra a Boreal</h2>
+<p>Mais do que cosméticos, acreditamos que a beleza está na expressão da sua própria essência. Nossa loja reúne produtos de perfumaria, maquiagem e cuidados pessoais para acompanhar você em todos os momentos.</p>
+<br>
+<button onclick="showPage('shop')">Explorar produtos</button>
+</section>
 </div>
 
-<!-- LOJA -->
+<div id="shop" class="page">
+<main>
+<h2 class="title">Nossa loja ♡</h2>
+<p class="subtitle">Encontre seus produtos favoritos.</p>
 
-<div id="loja" class="pagina">
-    <main>
-        <h2 class="titulo">Nossa loja ♡</h2>
-        <p class="subtitulo">Encontre seus produtos favoritos.</p>
-
-        <div class="categorias">
-            <button class="ativo" onclick="filtrar('Todos',this)">Todos</button>
-            <button onclick="filtrar('Perfumaria',this)">Perfumaria</button>
-            <button onclick="filtrar('Maquiagem',this)">Maquiagem</button>
-            <button onclick="filtrar('Skincare',this)">Skincare</button>
-            <button onclick="filtrar('Corpo',this)">Corpo</button>
-        </div>
-
-        <div class="produtos" id="vitrine"></div>
-    </main>
+<div class="categories">
+<button class="active" onclick="filterCategory('Todos',this)">Todos</button>
+<button onclick="filterCategory('Perfumaria',this)">Perfumaria</button>
+<button onclick="filterCategory('Maquiagem',this)">Maquiagem</button>
+<button onclick="filterCategory('Skincare',this)">Skincare</button>
+<button onclick="filterCategory('Corpo',this)">Corpo</button>
 </div>
 
-<!-- DETALHES DO PRODUTO -->
-
-<div id="detalhe" class="pagina">
-    <main>
-        <button onclick="mostrarPagina('loja')">← Voltar à loja</button>
-        <br><br>
-        <div class="detalhe-produto" id="informacoes"></div>
-    </main>
+<div class="products" id="catalog"></div>
+</main>
 </div>
 
-<!-- CARRINHO -->
-
-<div id="carrinho" class="pagina">
-    <main>
-        <h2 class="titulo">Meu carrinho ♡</h2>
-        <p class="subtitulo">Seus produtos escolhidos estão aqui.</p>
-
-        <div class="carrinho">
-            <div id="itensCarrinho"></div>
-            <div class="resumo" id="resumo"></div>
-        </div>
-
-        <br>
-        <button onclick="mostrarPagina('loja')">Continuar comprando</button>
-    </main>
+<div id="detail-page" class="page">
+<main>
+<button onclick="showPage('shop')">← Voltar à loja</button>
+<br><br>
+<div class="detail" id="detail-content"></div>
+</main>
 </div>
 
-<!-- SOBRE -->
+<div id="cart" class="page">
+<main>
+<h2 class="title">Meu carrinho ♡</h2>
+<p class="subtitle">Seus produtos escolhidos estão aqui.</p>
 
-<div id="sobre" class="pagina">
-    <section class="sobre">
-        <h2>Sobre a BOREAL</h2>
-        <p>
-            A BOREAL nasceu com a proposta de reunir beleza,
-            cuidado e personalidade em um só lugar.
-            <br><br>
-            Acreditamos que cada pessoa possui uma essência única
-            e que os pequenos cuidados fazem parte da forma como
-            expressamos quem somos.
-            <br><br>
-            Nossa missão é oferecer uma experiência especial
-            através de produtos de cosméticos e perfumaria.
-        </p>
-        <br>
-        <button onclick="mostrarPagina('loja')">Conheça nossos produtos</button>
-    </section>
+<div class="cart">
+<div id="cart-items"></div>
+<div class="summary" id="cart-summary"></div>
 </div>
 
-<!-- RODAPÉ -->
+<br>
+<button onclick="showPage('shop')">Continuar comprando</button>
+</main>
+</div>
+
+<div id="about" class="page">
+<section class="about">
+<h2>Sobre a BOREAL</h2>
+<p>A BOREAL nasceu com a proposta de reunir beleza, cuidado e personalidade em um só lugar.<br><br>
+Acreditamos que cada pessoa possui uma essência única e que os pequenos cuidados fazem parte da forma como expressamos quem somos.<br><br>
+Nossa missão é oferecer uma experiência especial através de produtos de cosméticos e perfumaria.</p>
+<br>
+<button onclick="showPage('shop')">Conheça nossos produtos</button>
+</section>
+</div>
 
 <footer id="contato">
-    <h2 class="logo">BOREAL</h2>
-    <p>Cosméticos & Perfumaria</p>
-    <p>Sua beleza, nossa inspiração!</p>
-    <p>Instagram:
-        <a href="https://instagram.com/boreal.cosmeticos" target="_blank">
-            @boreal.cosmeticos
-        </a>
-    </p>
-    <p>© 2026 Boreal Cosméticos. Todos os direitos reservados.</p>
+<h2 class="logo">BOREAL</h2>
+<p>Cosméticos &amp; Perfumaria</p>
+<p>Sua beleza, nossa inspiração!</p>
+<p>Instagram:
+<a href="https://instagram.com/boreal.cosmeticos" target="_blank" rel="noopener">@boreal.cosmeticos</a>
+</p>
+<p>© 2026 Boreal Cosméticos. Todos os direitos reservados.</p>
 </footer>
 
 <script>
 
-// PRODUTOS DA LOJA
+const products = [
 
-const produtos = [
 {
-id: 1,
-nome: "Perfume Feminino",
-preco: 89.90,
-categoria: "Perfumaria",
-imagem: "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=700",
-descricao: "Uma fragrância delicada e marcante, ideal para quem gosta de deixar sua essência por onde passa. Perfeita para momentos especiais e para o dia a dia.",
-tamanho: "100 ml",
-caracteristica: "Fragrância floral",
-uso: "Aplicar sobre a pele, preferencialmente nos pontos de pulsação."
+id:1,
+name:"Perfume Feminino",
+price:89.90,
+category:"Perfumaria",
+image:"https://images.unsplash.com/photo-1594035910387-fea47794261f?w=700",
+description:"Uma fragrância delicada e marcante, ideal para quem gosta de deixar sua essência por onde passa. Perfeita para momentos especiais e para o dia a dia.",
+size:"100 ml",
+feature:"Fragrância floral",
+use:"Aplicar sobre a pele, preferencialmente nos pontos de pulsação."
 },
+
 {
-id: 2,
-nome: "Perfume Masculino",
-preco: 99.90,
-categoria: "Perfumaria",
-imagem: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=700",
-descricao: "Uma fragrância moderna e sofisticada, que combina personalidade e elegância. Ideal para diversas ocasiões.",
-tamanho: "100 ml",
-caracteristica: "Fragrância amadeirada",
-uso: "Aplicar sobre a pele, preferencialmente nos pontos de pulsação."
+id:2,
+name:"Perfume Masculino",
+price:99.90,
+category:"Perfumaria",
+image:"https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=700",
+description:"Uma fragrância moderna e sofisticada, que combina personalidade e elegância. Ideal para diversas ocasiões.",
+size:"100 ml",
+feature:"Fragrância amadeirada",
+use:"Aplicar sobre a pele, preferencialmente nos pontos de pulsação."
 },
+
 {
-id: 3,
-nome: "Batom",
-preco: 29.90,
-categoria: "Maquiagem",
-imagem: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=700",
-descricao: "Batom com acabamento elegante, ideal para completar sua maquiagem e destacar seus lábios em qualquer ocasião.",
-tamanho: "3,5 g",
-caracteristica: "Acabamento cremoso",
-uso: "Aplicar diretamente nos lábios."
+id:3,
+name:"Batom",
+price:29.90,
+category:"Maquiagem",
+image:"https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=700",
+description:"Batom com acabamento elegante, ideal para completar sua maquiagem e destacar seus lábios em qualquer ocasião.",
+size:"3,5 g",
+feature:"Acabamento cremoso",
+use:"Aplicar diretamente nos lábios."
 },
+
 {
-id: 4,
-nome: "Kit Skincare",
-preco: 59.90,
-categoria: "Skincare",
-imagem: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=700",
-descricao: "Um conjunto de cuidados para fazer parte da sua rotina de beleza. Ideal para quem deseja dedicar um momento especial ao cuidado com a pele.",
-tamanho: "Kit com 3 itens",
-caracteristica: "Rotina de cuidados",
-uso: "Utilizar conforme as orientações de cada produto."
+id:4,
+name:"Kit Skincare",
+price:59.90,
+category:"Skincare",
+image:"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=700",
+description:"Um conjunto de cuidados para fazer parte da sua rotina de beleza. Ideal para quem deseja dedicar um momento especial ao cuidado com a pele.",
+size:"Kit com 3 itens",
+feature:"Rotina de cuidados",
+use:"Utilizar conforme as orientações de cada produto."
 },
+
 {
-id: 5,
-nome: "Creme Hidratante",
-preco: 39.90,
-categoria: "Corpo",
-imagem: "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?w=700",
-descricao: "Creme hidratante desenvolvido para proporcionar uma sensação agradável de maciez e cuidado para a pele.",
-tamanho: "200 g",
-caracteristica: "Hidratação corporal",
-uso: "Aplicar sobre a pele limpa e espalhar suavemente."
+id:5,
+name:"Creme Hidratante",
+price:39.90,
+category:"Corpo",
+image:"https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?w=700",
+description:"Creme hidratante para proporcionar uma sensação agradável de maciez e cuidado para a pele.",
+size:"200 g",
+feature:"Hidratação corporal",
+use:"Aplicar sobre a pele limpa e espalhar suavemente."
 },
+
 {
-id: 6,
-nome: "Gloss Labial",
-preco: 24.90,
-categoria: "Maquiagem",
-imagem: "https://images.unsplash.com/photo-1631214540553-ff044a5f3f3c?w=700",
-descricao: "Gloss labial para dar brilho e um acabamento delicado à maquiagem. Ideal para diferentes estilos e ocasiões.",
-tamanho: "5 ml",
-caracteristica: "Efeito brilhante",
-uso: "Aplicar nos lábios conforme desejado."
+id:6,
+name:"Gloss Labial",
+price:24.90,
+category:"Maquiagem",
+image:"https://images.unsplash.com/photo-1631214540553-ff044a5f3f3c?w=700",
+description:"Gloss labial para dar brilho e um acabamento delicado à maquiagem. Ideal para diferentes estilos e ocasiões.",
+size:"5 ml",
+feature:"Efeito brilhante",
+use:"Aplicar nos lábios conforme desejado."
 },
+
 {
-id: 7,
-nome: "Sérum Facial",
-preco: 49.90,
-categoria: "Skincare",
-imagem: "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?w=700",
-descricao: "Um produto para complementar sua rotina de cuidados faciais e proporcionar um momento de atenção à pele.",
-tamanho: "30 ml",
-caracteristica: "Cuidado facial",
-uso: "Seguir as instruções de uso indicadas na embalagem."
+id:7,
+name:"Sérum Facial",
+price:49.90,
+category:"Skincare",
+image:"https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?w=700",
+description:"Um produto para complementar sua rotina de cuidados faciais e proporcionar um momento de atenção à pele.",
+size:"30 ml",
+feature:"Cuidado facial",
+use:"Seguir as instruções de uso indicadas na embalagem."
 },
+
 {
-id: 8,
-nome: "Body Splash",
-preco: 45.90,
-categoria: "Corpo",
-imagem: "https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=700",
-descricao: "Uma fragrância leve e agradável para acompanhar sua rotina. Ideal para quem gosta de se sentir perfumada em diferentes momentos do dia.",
-tamanho: "200 ml",
-caracteristica: "Fragrância suave",
-uso: "Borrifar sobre o corpo, evitando contato com os olhos."
+id:8,
+name:"Body Splash",
+price:45.90,
+category:"Corpo",
+image:"https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=700",
+description:"Uma fragrância leve e agradável para acompanhar sua rotina. Ideal para quem gosta de se sentir perfumada em diferentes momentos do dia.",
+size:"200 ml",
+feature:"Fragrância suave",
+use:"Borrifar sobre o corpo, evitando contato com os olhos."
 }
+
 ];
 
-let carrinho = [];
-let categoriaAtual = "Todos";
-let produtoAtual = null;
-let quantidadeDetalhe = 1;
+let cart = [];
+let currentProduct = null;
+let detailQuantity = 1;
 
-function dinheiro(valor) {
-return valor.toLocaleString("pt-BR", {
-style: "currency",
-currency: "BRL"
+function money(value){
+return value.toLocaleString("pt-BR",{
+style:"currency",
+currency:"BRL"
 });
 }
 
-// MOSTRAR PÁGINAS
-
-function mostrarPagina(id) {
-document.querySelectorAll(".pagina").forEach(p => {
-p.classList.remove("ativa");
+function showPage(id){
+document.querySelectorAll(".page").forEach(page=>{
+page.classList.remove("active");
 });
 
-document.getElementById(id).classList.add("ativa");
-window.scrollTo(0,0);
+document.getElementById(id).classList.add("active");
+window.scrollTo({top:0,behavior:"smooth"});
 
-if (id === "carrinho") atualizarCarrinho();
+if(id==="cart") renderCart();
 }
 
-// MOSTRAR PRODUTOS
-
-function criarCard(p) {
+function productCard(p){
 return `
-<div class="produto">
-<img src="${p.imagem}" alt="${p.nome}">
-<h3>${p.nome}</h3>
-<p class="descricao-curta">${p.descricao.substring(0,75)}...</p>
-<p class="preco">${dinheiro(p.preco)}</p>
-<button class="ver" onclick="abrirProduto(${p.id})">Ver detalhes</button>
-<button onclick="adicionar(${p.id})">Adicionar ao carrinho</button>
-</div>
+<article class="product">
+<img src="${p.image}" alt="${p.name}" loading="lazy">
+<h3>${p.name}</h3>
+<p class="short">${p.description.slice(0,78)}...</p>
+<p class="price">${money(p.price)}</p>
+<button class="details-btn" onclick="openProduct(${p.id})">Ver detalhes</button>
+<button onclick="addToCart(${p.id})">Adicionar ao carrinho</button>
+</article>
 `;
 }
 
-function carregarProdutos(lista = produtos) {
-document.getElementById("vitrine").innerHTML =
-lista.map(criarCard).join("") ||
+function renderCatalog(list=products){
+document.getElementById("catalog").innerHTML=
+list.map(productCard).join("") ||
 "<p>Nenhum produto encontrado.</p>";
 }
 
-function carregarDestaques() {
-document.getElementById("destaques").innerHTML =
-produtos.slice(0,4).map(criarCard).join("");
-}
-
-// FILTROS
-
-function filtrar(categoria, botao) {
-categoriaAtual = categoria;
-
-document.querySelectorAll(".categorias button").forEach(b => {
-b.classList.remove("ativo");
+function filterCategory(category,button){
+document.querySelectorAll(".categories button").forEach(b=>{
+b.classList.remove("active");
 });
 
-botao.classList.add("ativo");
+button.classList.add("active");
 
-const lista = categoria === "Todos"
-? produtos
-: produtos.filter(p => p.categoria === categoria);
-
-carregarProdutos(lista);
-}
-
-// BUSCA
-
-function pesquisar() {
-const termo = document.getElementById("busca").value.toLowerCase();
-
-mostrarPagina("loja");
-
-const lista = produtos.filter(p =>
-p.nome.toLowerCase().includes(termo) ||
-p.categoria.toLowerCase().includes(termo) ||
-p.descricao.toLowerCase().includes(termo)
+renderCatalog(
+category==="Todos"
+? products
+: products.filter(p=>p.category===category)
 );
-
-carregarProdutos(lista);
 }
 
-// DETALHES
+function searchProducts(){
+const term=document.getElementById("search").value.trim().toLowerCase();
 
-function abrirProduto(id) {
-produtoAtual = produtos.find(p => p.id === id);
-quantidadeDetalhe = 1;
+showPage("shop");
 
-const p = produtoAtual;
+renderCatalog(products.filter(p=>
+(p.name+" "+p.category+" "+p.description)
+.toLowerCase().includes(term)
+));
+}
 
-document.getElementById("informacoes").innerHTML = `
-<div>
-<img src="${p.imagem}" alt="${p.nome}">
-</div>
+function openProduct(id){
+currentProduct=products.find(p=>p.id===id);
+detailQuantity=1;
 
-<div class="detalhe-info">
-<p>${p.categoria}</p>
-<h2>${p.nome}</h2>
-<p class="preco">${dinheiro(p.preco)}</p>
+const p=currentProduct;
 
-<p>${p.descricao}</p>
+document.getElementById("detail-content").innerHTML=`
+<img src="${p.image}" alt="${p.name}">
 
-<p><b>Categoria:</b> ${p.categoria}</p>
-<p><b>Conteúdo:</b> ${p.tamanho}</p>
-<p><b>Característica:</b> ${p.caracteristica}</p>
-<p><b>Modo de uso:</b> ${p.uso}</p>
+<div class="detail-info">
+<p>${p.category}</p>
+<h2>${p.name}</h2>
+<p class="price">${money(p.price)}</p>
+<p>${p.description}</p>
+<p><b>Categoria:</b> ${p.category}</p>
+<p><b>Conteúdo:</b> ${p.size}</p>
+<p><b>Característica:</b> ${p.feature}</p>
+<p><b>Modo de uso:</b> ${p.use}</p>
 
-<div class="quantidade">
+<div class="quantity">
 <b>Quantidade:</b>
-<button onclick="alterarQuantidade(-1)">−</button>
-<span id="quantidadeDetalhe">1</span>
-<button onclick="alterarQuantidade(1)">+</button>
+<button onclick="changeDetailQuantity(-1)">−</button>
+<span id="detail-quantity">1</span>
+<button onclick="changeDetailQuantity(1)">+</button>
 </div>
 
-<button onclick="adicionar(${p.id},quantidadeDetalhe)">
+<button onclick="addToCart(${p.id},detailQuantity)">
 Adicionar ao carrinho 🛒
 </button>
 </div>
 `;
 
-mostrarPagina("detalhe");
+showPage("detail-page");
 }
 
-function alterarQuantidade(valor) {
-quantidadeDetalhe = Math.max(1, quantidadeDetalhe + valor);
-document.getElementById("quantidadeDetalhe").innerText = quantidadeDetalhe;
+function changeDetailQuantity(amount){
+detailQuantity=Math.max(1,detailQuantity+amount);
+document.getElementById("detail-quantity").textContent=detailQuantity;
 }
 
-// CARRINHO
+function addToCart(id,quantity=1){
+const existing=cart.find(item=>item.id===id);
 
-function adicionar(id, quantidade = 1) {
-const p = produtos.find(item => item.id === id);
-
-const existente = carrinho.find(item => item.id === id);
-
-if (existente) {
-existente.quantidade += quantidade;
-} else {
-carrinho.push({
-id: p.id,
-quantidade: quantidade
-});
+if(existing){
+existing.quantity+=quantity;
+}else{
+cart.push({id,quantity});
 }
 
-atualizarContador();
-
-alert("Produto adicionado ao carrinho com sucesso!");
+updateCount();
+alert("Produto adicionado ao carrinho!");
 }
 
-function atualizarContador() {
-const total = carrinho.reduce((soma,item) =>
-soma + item.quantidade, 0);
-
-document.getElementById("contador").innerText = total;
+function updateCount(){
+document.getElementById("cart-count").textContent=
+cart.reduce((sum,item)=>sum+item.quantity,0);
 }
 
-function atualizarCarrinho() {
-const area = document.getElementById("itensCarrinho");
-const resumo = document.getElementById("resumo");
+function renderCart(){
+const area=document.getElementById("cart-items");
+const summary=document.getElementById("cart-summary");
 
-if (carrinho.length === 0) {
-area.innerHTML = `
-<div class="vazio">
+if(cart.length===0){
+area.innerHTML=`
+<div class="empty">
 <h2>Seu carrinho está vazio ♡</h2>
 <p>Que tal conhecer nossos produtos?</p>
-<button onclick="mostrarPagina('loja')">Explorar loja</button>
+<button onclick="showPage('shop')">Explorar loja</button>
 </div>
 `;
-resumo.innerHTML = "";
+summary.innerHTML="";
 return;
 }
 
-let total = 0;
+let total=0;
 
-area.innerHTML = carrinho.map(item => {
-const p = produtos.find(produto => produto.id === item.id);
-const subtotal = p.preco * item.quantidade;
+area.innerHTML=cart.map(item=>{
+const p=products.find(product=>product.id===item.id);
+const subtotal=p.price*item.quantity;
 
-total += subtotal;
+total+=subtotal;
 
 return `
-<div class="item-carrinho">
-<img src="${p.imagem}" alt="${p.nome}">
-<div>
-<h3>${p.nome}</h3>
-<p>${dinheiro(p.preco)} cada</p>
-<p>Quantidade: ${item.quantidade}</p>
-<p class="preco">${dinheiro(subtotal)}</p>
-<button onclick="alterarItem(${p.id},-1)">−</button>
-<button onclick="alterarItem(${p.id},1)">+</button>
-<button onclick="remover(${p.id})">Remover</button>
+<div class="cart-item">
+<img src="${p.image}" alt="${p.name}">
+<div class="item-info">
+<b>${p.name}</b><br>
+${money(p.price)} cada<br>
+Quantidade: ${item.quantity}
+<p class="price">${money(subtotal)}</p>
+<button onclick="changeCartQuantity(${p.id},-1)">−</button>
+<button onclick="changeCartQuantity(${p.id},1)">+</button>
+<button onclick="removeFromCart(${p.id})">Remover</button>
 </div>
 </div>
 `;
 }).join("");
 
-resumo.innerHTML = `
-<p>Subtotal: ${dinheiro(total)}</p>
-<p>Frete: A combinar</p>
-<h2>Total: ${dinheiro(total)}</h2>
-<button onclick="finalizarCompra()">Finalizar pedido</button>
+summary.innerHTML=`
+<p>Subtotal: ${money(total)}</p>
+<p>Frete: a combinar</p>
+<h2>Total: ${money(total)}</h2>
+<br>
+<button onclick="checkout()">Finalizar pedido pelo WhatsApp</button>
 `;
 }
 
-function alterarItem(id, valor) {
-const item = carrinho.find(p => p.id === id);
+function changeCartQuantity(id,amount){
+const item=cart.find(p=>p.id===id);
 
-item.quantidade += valor;
+if(!item)return;
 
-if (item.quantidade <= 0) {
-remover(id);
-return;
+item.quantity+=amount;
+
+if(item.quantity<=0){
+cart=cart.filter(p=>p.id!==id);
 }
 
-atualizarCarrinho();
-atualizarContador();
+updateCount();
+renderCart();
 }
 
-function remover(id) {
-carrinho = carrinho.filter(p => p.id !== id);
-atualizarCarrinho();
-atualizarContador();
+function removeFromCart(id){
+cart=cart.filter(p=>p.id!==id);
+updateCount();
+renderCart();
 }
 
-// FINALIZAR PEDIDO
-
-function finalizarCompra() {
-if (carrinho.length === 0) {
+function checkout(){
+if(cart.length===0){
 alert("Seu carrinho está vazio!");
 return;
 }
 
-// TROQUE PELO NÚMERO REAL DA LOJA.
-// Use DDD + número, somente números, com código do Brasil.
+// COLOQUE AQUI O WHATSAPP DA LOJA.
+// Formato: 55 + DDD + número, somente números.
 
-const telefone = "SEUNUMERO";
+const phone="SEUNUMERO";
 
-if (telefone === "SEUNUMERO") {
-alert("Para ativar o WhatsApp, coloque o número da loja na variável telefone do código.");
+if(phone==="SEUNUMERO"){
+alert("Configure o número de WhatsApp da loja no código para ativar os pedidos.");
 return;
 }
 
-let mensagem = "Olá! Gostaria de fazer um pedido na BOREAL:%0A%0A";
-let total = 0;
+let message="Olá! Gostaria de fazer um pedido na BOREAL:\n\n";
+let total=0;
 
-carrinho.forEach(item => {
-const p = produtos.find(produto => produto.id === item.id);
-mensagem += `${p.nome} - ${item.quantidade} unidade(s) - ${dinheiro(p.preco * item.quantidade)}%0A`;
-total += p.preco * item.quantidade;
+cart.forEach(item=>{
+const p=products.find(product=>product.id===item.id);
+
+message+=`${p.name} - ${item.quantity} unidade(s) - ${money(p.price*item.quantity)}\n`;
+
+total+=p.price*item.quantity;
 });
 
-mensagem += `%0ATotal: ${dinheiro(total)}`;
-mensagem += "%0A%0AGostaria de informações sobre a entrega e pagamento.";
+message+=`\nTotal: ${money(total)}\nGostaria de combinar entrega e pagamento.`;
 
 window.open(
-"https://wa.me/" + telefone + "?text=" + mensagem,
+"https://wa.me/"+phone+"?text="+encodeURIComponent(message),
 "_blank"
 );
 }
 
-// INICIALIZAÇÃO
+renderCatalog();
 
-carregarProdutos();
-carregarDestaques();
-atualizarContador();
+document.getElementById("featured").innerHTML=
+products.slice(0,4).map(productCard).join("");
+
+updateCount();
 
 </script>
 
